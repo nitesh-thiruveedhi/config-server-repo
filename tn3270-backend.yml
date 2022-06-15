@@ -1,0 +1,45 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: get-transmap
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    password: admin
+    url: jdbc:sqlite:maps.db
+    username: admin
+  jpa:
+    database-platform: com.nitesh.transmap.dialect.SQLDialect
+    hibernate:
+      show_sql: true
+  cloud:
+    compatibility-verifier:
+      enabled: false
+  #Java Sleuth Logs
+  sleuth:
+    sampler:
+      probability: 100
+  #Logs to send to Zipkin tracing
+  zipkin:
+    baseUrl: http://localhost:9411/
+    enabled: false
+transmap:
+  corsOrigin: http://localhost:3000
+  application:
+    name: get-transmap
+#prometheus
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,loggers,prometheus
+  endpoint:
+    health:
+      show-details: always
+#printing the system logs to a file
+logging:
+  file:
+    path:
+    name: get-transmap.log
+    clean-history-on-start: true
+#    rolling-file-name: get-transmap-%d{yyyy-MM-dd-HH-mm-ss}.%i.log
