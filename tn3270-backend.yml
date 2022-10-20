@@ -27,6 +27,7 @@ transmap:
   corsOrigin: http://localhost:3000
   application:
     name: get-transmap
+  commonConfig: "This is from Common Config repository"
 #prometheus
 management:
   endpoints:
